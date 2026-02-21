@@ -114,30 +114,42 @@
 
 <div class="card">
   <h1>🚧 Under Construction 🚧</h1>
-  <p>Our website is currently being revamped. We'll be back soon with a fresh look!</p>
+  <p>Our website is currently being revamped. We'll be back soon!</p>
   <div id="timer">Loading countdown...</div>
   <div class="contact-info">
     <p>For development, concerns, or claims about this domain or copyright issues:</p>
     <p><strong>Contact: +254759015580</strong></p>
     <p>Please reach out within the next 36 hours.</p>
   </div>
-  <a href="mailto:admin@yourdomain.com" class="btn">Contact Us</a>
+  <a href="mailto:admin@blackwaterssafaris.com" class="btn">Contact Us</a>
 </div>
 
 <script>
-  // Set the countdown date to 36 hours from now
   const countdownHours = 36;
-  const targetDate = new Date(new Date().getTime() + countdownHours * 60 * 60 * 1000).getTime();
+  const storageKey = 'countdownEndTime';
+
+  let targetDate;
+
+  // Check if the end time is already stored
+  const storedEndTime = localStorage.getItem(storageKey);
+  if (storedEndTime) {
+    targetDate = new Date(parseInt(storedEndTime));
+  } else {
+    // Set the end time 36 hours from now and store it
+    targetDate = new Date(new Date().getTime() + countdownHours * 60 * 60 * 1000);
+    localStorage.setItem(storageKey, targetDate.getTime());
+  }
 
   const timerDiv = document.getElementById('timer');
 
   function updateCountdown() {
     const now = new Date().getTime();
-    const distance = targetDate - now;
+    const distance = targetDate.getTime() - now;
 
     if (distance < 0) {
       clearInterval(interval);
       timerDiv.innerHTML = "We are back online!";
+      localStorage.removeItem(storageKey); // Optional: remove storage once countdown ends
       return;
     }
 
