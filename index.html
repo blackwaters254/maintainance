@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Website Under Construction</title>
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    color: #333;
+  }
+
+  .container {
+    text-align: center;
+    max-width: 600px;
+    padding: 20px;
+    border: 3px dashed #007bff;
+    border-radius: 10px;
+    background-color: #fff;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+
+  #timer {
+    font-size: 2em;
+    margin: 20px 0;
+    color: #dc3545;
+  }
+
+  .contact {
+    font-size: 1em;
+    margin-top: 20px;
+  }
+
+  @media(max-width: 600px){
+    body {
+      padding: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Website Under Construction</h1>
+  <p>Our website is currently under construction. We will be back soon!</p>
+  <div id="timer"></div>
+  <div class="contact">
+    <p>For development and concerns, claims about this domain name or copyright issues:</p>
+    <p><strong>Contact: +254759015580</strong></p>
+    <p>Please reach out within 36 hours.</p>
+  </div>
+</div>
+
+<script>
+  // Set the countdown date to 36 hours from now
+  const countdownHours = 36;
+  const targetDate = new Date(new Date().getTime() + countdownHours * 60 * 60 * 1000).getTime();
+
+  const timerDiv = document.getElementById('timer');
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate - now;
+
+    if (distance < 0) {
+      clearInterval(interval);
+      timerDiv.innerHTML = "We are back online!";
+      return;
+    }
+
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    timerDiv.innerHTML = `Time remaining: ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  updateCountdown();
+  const interval = setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
