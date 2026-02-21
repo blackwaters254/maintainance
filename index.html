@@ -49,6 +49,14 @@
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
   }
 
+  .domain-name {
+    font-size: 1.2em;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+  }
+
   p {
     font-size: 1.2em;
     margin: 15px 0;
@@ -114,6 +122,7 @@
 
 <div class="card">
   <h1>🚧 Under Construction 🚧</h1>
+  <div class="domain-name">Domain: www.blackwaterssafaris.com</div>
   <p>Our website is currently being revamped. We'll be back soon!</p>
   <div id="timer">Loading countdown...</div>
   <div class="contact-info">
@@ -125,31 +134,25 @@
 </div>
 
 <script>
-  const countdownHours = 36;
-  const storageKey = 'countdownEndTime';
+  // Fixed start date: February 21, 2026 at 14:30 (2:30 PM)
+  const startDateStr = "2026-02-21T14:30:00"; 
+  const startDate = new Date(startDateStr).getTime();
 
-  let targetDate;
+  // Countdown duration: 36 hours in milliseconds
+  const countdownDuration = 36 * 60 * 60 * 1000; 
 
-  // Check if the end time is already stored
-  const storedEndTime = localStorage.getItem(storageKey);
-  if (storedEndTime) {
-    targetDate = new Date(parseInt(storedEndTime));
-  } else {
-    // Set the end time 36 hours from now and store it
-    targetDate = new Date(new Date().getTime() + countdownHours * 60 * 60 * 1000);
-    localStorage.setItem(storageKey, targetDate.getTime());
-  }
+  // Calculate target end time
+  const targetTime = startDate + countdownDuration;
 
   const timerDiv = document.getElementById('timer');
 
   function updateCountdown() {
     const now = new Date().getTime();
-    const distance = targetDate.getTime() - now;
+    const distance = targetTime - now;
 
     if (distance < 0) {
       clearInterval(interval);
       timerDiv.innerHTML = "We are back online!";
-      localStorage.removeItem(storageKey); // Optional: remove storage once countdown ends
       return;
     }
 
