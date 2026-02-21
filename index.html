@@ -4,68 +4,124 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Website Under Construction</title>
+<!-- Google Fonts for a modern look -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 <style>
-  body {
+  /* Reset some default styles */
+  * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa;
-    font-family: Arial, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    color: #333;
   }
 
-  .container {
-    text-align: center;
-    max-width: 600px;
+  body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
     padding: 20px;
-    border: 3px dashed #007bff;
-    border-radius: 10px;
-    background-color: #fff;
+  }
+
+  .card {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    animation: fadeIn 2s ease-in-out;
+  }
+
+  @keyframes fadeIn {
+    from {opacity: 0; transform: translateY(-20px);}
+    to {opacity: 1; transform: translateY(0);}
   }
 
   h1 {
-    font-size: 2.5em;
+    font-size: 3em;
     margin-bottom: 20px;
+    color: #ffd700;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
   }
 
   p {
     font-size: 1.2em;
-    margin: 10px 0;
+    margin: 15px 0;
   }
 
   #timer {
-    font-size: 2em;
-    margin: 20px 0;
-    color: #dc3545;
+    font-size: 2.5em;
+    margin: 25px 0;
+    padding: 10px 20px;
+    background: linear-gradient(90deg, #ff416c, #ff4b2b);
+    border-radius: 30px;
+    display: inline-block;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: 2px;
+    animation: pulse 2s infinite;
   }
 
-  .contact {
+  @keyframes pulse {
+    0%, 100% {transform: scale(1);}
+    50% {transform: scale(1.05);}
+  }
+
+  .contact-info {
+    margin-top: 30px;
+  }
+
+  .contact-info p {
     font-size: 1em;
-    margin-top: 20px;
+    margin: 10px 0;
   }
 
-  @media(max-width: 600px){
-    body {
-      padding: 10px;
+  .btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-top: 20px;
+    background-color: #ffd700;
+    color: #333;
+    font-weight: 700;
+    border-radius: 25px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.3s;
+  }
+
+  .btn:hover {
+    background-color: #e6c200;
+    transform: translateY(-2px);
+  }
+
+  @media(max-width: 768px){
+    h1 {
+      font-size: 2.2em;
+    }
+    #timer {
+      font-size: 2em;
     }
   }
+
 </style>
 </head>
 <body>
 
-<div class="container">
-  <h1>Website Under Construction</h1>
-  <p>Our website is currently under construction. We will be back soon!</p>
-  <div id="timer"></div>
-  <div class="contact">
-    <p>For development and concerns, claims about this domain name or copyright issues:</p>
+<div class="card">
+  <h1>🚧 Under Construction 🚧</h1>
+  <p>Our website is currently being revamped. We'll be back soon with a fresh look!</p>
+  <div id="timer">Loading countdown...</div>
+  <div class="contact-info">
+    <p>For development, concerns, or claims about this domain or copyright issues:</p>
     <p><strong>Contact: +254759015580</strong></p>
-    <p>Please reach out within 36 hours.</p>
+    <p>Please reach out within the next 36 hours.</p>
   </div>
+  <a href="mailto:admin@yourdomain.com" class="btn">Contact Us</a>
 </div>
 
 <script>
